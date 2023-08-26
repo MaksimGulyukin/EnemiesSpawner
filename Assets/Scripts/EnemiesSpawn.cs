@@ -8,9 +8,7 @@ public class EnemiesSpawn : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab;
 
     private Transform[] _points;
-    private List<GameObject> _enemies = new List<GameObject>();
-
-    private int _maxEnemiesCount = 6;
+    
     private float _spawnInterval = 2f;
     private float _nextSpawnTime;
 
@@ -41,8 +39,7 @@ public class EnemiesSpawn : MonoBehaviour
         Transform randomSpawnPoint = _points[randomIndex];
 
         GameObject enemy = Instantiate(_enemyPrefab, randomSpawnPoint.position, Quaternion.identity);
-        _enemies.Add(enemy);
-
+        
         Vector2 spawnDirection = randomSpawnPoint.position - _spawnPoint.position;
         EnemyMove enemyMove = enemy.GetComponent<EnemyMove>();
         enemyMove.SetMovementDirection(spawnDirection);
